@@ -9,44 +9,53 @@ import { Skeleton } from "antd";
 const Albums = () => {
   const { getAccessTokenSilently } = useAuth0();
 
-  const { data: albums, isLoading } = useQuery(["allAlbums"],
-    async () => {
-      const token = await getAccessTokenSilently();
-      const data = await fetchAllAlbums(token);
-      return data;
-    }
-  );
+  const { data: albums, isLoading } = useQuery(["allAlbums"], async () => {
+    const token = await getAccessTokenSilently();
+    const data = await fetchAllAlbums(token);
+    return data;
+  });
+
+  const albumsPerRow = 6;
+  const numRows = 6;
+
+  const rowTitles = ["Pop Favorites", "Hip Hop Jams","Indie Vibes"];
 
   return (
     <ContainerAlbumPrincipal>
-      <h2>Albums</h2>
-      <ContainerAlbum>
-        {
-          isLoading ?
-            <Skeleton>
-              <Album />
-            </Skeleton>
-            :
-            (
+
+      {[...Array(numRows)].map((_, rowIndex) => (
+        <div key={rowIndex}>
+          <h3>{rowTitles[rowIndex]}</h3>
+          <ContainerAlbum>
+            {isLoading ? (
+              <Skeleton>
+                <Album />
+              </Skeleton>
+            ) : (
               albums &&
-              albums?.map((album) => (
-                <Link key={album._id} to={`/album/${album._id}`}>
-                  <Album>
-                    <AlbumBackground image={album.img && album.img.secure_url} />
-                    <AlbumImage
-                      src={album.img && album.img.secure_url}
-                      alt={album.title}
-                    />
-                    <AlbumTitle>{album.title}</AlbumTitle>
-                  </Album>
-                </Link>
-              ))
-            )
-        }
-      </ContainerAlbum>
+              albums
+                .slice(rowIndex * albumsPerRow, (rowIndex + 1) * albumsPerRow)
+                .map((album) => (
+                  <Link key={album._id} to={`/album/${album._id}`}>
+                    <Album>
+                      <AlbumBackground
+                        image={album.img && album.img.secure_url}
+                      />
+                      <AlbumImage
+                        src={album.img && album.img.secure_url}
+                        alt={album.title}
+                      />
+                      <AlbumTitle>{album.title}</AlbumTitle>
+                    </Album>
+                  </Link>
+                ))
+            )}
+          </ContainerAlbum>
+        </div>
+      ))}
     </ContainerAlbumPrincipal>
   );
-}
+};
 
 export default Albums;
 
