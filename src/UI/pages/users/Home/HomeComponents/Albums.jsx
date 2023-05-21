@@ -15,16 +15,9 @@ const Albums = () => {
     return data;
   });
 
-<<<<<<< HEAD
-  // Define the number of albums per row and the number of rows
-  const albumsPerRow = 6;
-  const numRows = 6;
-  // Array con los títulos personalizados para cada fila
-=======
   const albumsPerRow = 6;
   const numRows = 6;
 
->>>>>>> 5cfd9958979794739cbbc5f00781ec6608009b64
   const rowTitles = ["Pop Favorites", "Hip Hop Jams","Indie Vibes"];
 
   return (
@@ -32,11 +25,7 @@ const Albums = () => {
 
       {[...Array(numRows)].map((_, rowIndex) => (
         <div key={rowIndex}>
-<<<<<<< HEAD
-          <h3>{rowTitles[rowIndex]}</h3> {/* Título personalizado para cada fila */}
-=======
           <h3>{rowTitles[rowIndex]}</h3>
->>>>>>> 5cfd9958979794739cbbc5f00781ec6608009b64
           <ContainerAlbum>
             {isLoading ? (
               <Skeleton>
