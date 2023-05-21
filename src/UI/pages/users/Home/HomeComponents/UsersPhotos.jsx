@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const CirclePhotosContainer = styled.div`
 overflow: hidden;
 
-    overflow-x: scroll;
+    overflow-x: auto;
     position: relative;
     display: flex;
     flex-flow: row nowrap;
