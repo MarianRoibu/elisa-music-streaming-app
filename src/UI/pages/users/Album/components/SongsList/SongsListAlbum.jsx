@@ -40,7 +40,6 @@ export const SongsListAlbum = ({ data, imgAlbum }) => {
             })
           }}>
 
-
             <ImgSong src={imgAlbum} />
             <ContainerSongInfo>
               <TitleSmall>{data[index].title}</TitleSmall>

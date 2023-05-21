@@ -4,6 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Albums from "./HomeComponents/Albums";
 import PlaylistPage from "../Library/components/PlaylistPage";
 import CirclePhotos from "./HomeComponents/UsersPhotos";
+import RecomendedSongsList from "../Player/components/RecomendedSongsList";
 
 export function HomePage() {
   const { getAccessTokenSilently } = useAuth0()

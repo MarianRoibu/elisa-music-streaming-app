@@ -18,7 +18,7 @@ export const ContainerImageMobile = styled.img`
   width: 60%;
   position: absolute;
   background-color: transparent;
-  height: 40%;
+  height: 30%;
   margin-left: 5rem;
   margin-top: 10%;
   object-fit: cover;
@@ -83,7 +83,7 @@ export const RecomendedSongs = styled.table`
   border-collapse: collapse;
   overflow-x: hidden;
   overflow-y: scroll; 
-  
+  z-index: 999;
   td {
     padding: 10px;
   }

@@ -25,7 +25,7 @@ export function PlayerPage() {
               <SideBarDesktop />
               <BarLibraryDesktop />
               <PlayerComponent id={id} albumImg={albumImg} />
-             <RecomendedSongsList />
+              
             </>
           ) : (
             <p>Error: Playlist not found</p>
